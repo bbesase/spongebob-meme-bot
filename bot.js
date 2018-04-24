@@ -1,3 +1,4 @@
+// var Discord = require('discord.io');
 var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
@@ -34,6 +35,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 });
             break;
             // Just add any case commands if you want to..
+            default:
+                bot.sendMessage({ to: channelID, message: 'Unknown command.' });
          }
      }
 });
