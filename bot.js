@@ -31,9 +31,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             // !ping
             case 'sb':
                 var camelCase = args.toString().split('').map((v,i) => i % 2 ? v.toLowerCase(): v.toUpperCase()).join('').replace(/,/g , ' ');
+                var finalMessage = camelCase + '\n' + 'http://i0.kym-cdn.com/entries/icons/original/000/022/940/mockingspongebobbb.jpg'
                 bot.sendMessage({
                     to: channelID,
-                    message: camelCase
+                    message: finalMessage
                 });
             break;
             // Just add any case commands if you want to..
