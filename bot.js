@@ -1,3 +1,4 @@
+// var Discord = require('discord.io');
 var Discord = require('discord.io');
 var logger = require('winston');
 var auth = require('./auth.json');
@@ -20,17 +21,19 @@ bot.on('ready', function (evt) {
 bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
-    if (message.substring(0, 1) == '!') {
+
+    if (message.substring(0, 1) == '/') {
         var args = message.substring(1).split(' ');
         var cmd = args[0];
-       
+
         args = args.splice(1);
         switch(cmd) {
             // !ping
-            case 'ping':
+            case 'sb':
+                var camelCase = args.toString().split('').map((v,i) => i % 2 ? v.toLowerCase(): v.toUpperCase()).join('').replace(/,/g , ' ');
                 bot.sendMessage({
                     to: channelID,
-                    message: 'Pong!'
+                    message: camelCase
                 });
             break;
             // Just add any case commands if you want to..
